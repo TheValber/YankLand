@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class VisitorController : MonoBehaviour
 {
@@ -23,7 +25,8 @@ public class VisitorController : MonoBehaviour
     {
         if (agent.remainingDistance < 1.0f)
         {
-            agent.SetDestination(targets[Random.Range(0, targets.Length)].transform.position);
+            int randomIndex = Random.Range(0, targets.Length);
+            agent.SetDestination(targets[randomIndex].transform.position);
         }
     }
 }
