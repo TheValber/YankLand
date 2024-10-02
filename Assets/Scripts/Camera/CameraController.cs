@@ -1,19 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
 
 public class CameraController : MonoBehaviour
 {
-    private float speed = 10.0f;
+    private float speed = 15.0f;
+    private float sprintSpeed = 30.0f;
+    private float mouseSenstivity = 1.0f;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
+    {
+        move();
+        rotate();
+    }
+
+    void move()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
@@ -29,6 +39,23 @@ public class CameraController : MonoBehaviour
             direction.y = -1.0f;
         }
         
-        transform.Translate(direction * speed * Time.deltaTime);
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            transform.Translate(direction * sprintSpeed * Time.deltaTime);
+        }
+        else
+        {
+            transform.Translate(direction * speed * Time.deltaTime);
+        }
+        
+    }
+    
+    void rotate()
+    {
+        Vector2 mouseDelta = mouseSenstivity * new Vector2( Input.GetAxis( "Mouse X" ), -Input.GetAxis( "Mouse Y" ) );
+        Quaternion rotation = transform.rotation;
+        Quaternion horizontal = Quaternion.AngleAxis( mouseDelta.x, Vector3.up );
+        Quaternion vertical = Quaternion.AngleAxis( mouseDelta.y, Vector3.right );
+        transform.rotation = horizontal * rotation * vertical;
     }
 }
