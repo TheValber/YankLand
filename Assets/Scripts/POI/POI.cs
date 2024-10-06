@@ -52,7 +52,7 @@ public class POI : MonoBehaviour
             {
                 if (index == 0)
                 {
-                    visitor.setNewDestination(previousPosition, 0.0f);
+                    visitor.setNewDestination(previousPosition, 0.1f);
 
                 }
                 if ((visitor.getPosition() - previousPosition).magnitude > 2.5f)

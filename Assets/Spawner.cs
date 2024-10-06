@@ -18,14 +18,16 @@ public class Spawner : MonoBehaviour
         // Spawn 1
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Instantiate(visitor, transform.position, Quaternion.identity);
+            Vector2 spawnCircle = Random.insideUnitCircle * 50.0f;
+            Instantiate(visitor, transform.position + new Vector3(spawnCircle.x, 0, spawnCircle.y), Quaternion.identity);
         }
         // Spawn 10
         if (Input.GetKeyDown(KeyCode.R))
         {
             for (int i = 0; i < 10; i++)
             {
-                Instantiate(visitor, transform.position, Quaternion.identity);
+                Vector2 spawnCircle = Random.insideUnitCircle * 50.0f;
+                Instantiate(visitor, transform.position + new Vector3(spawnCircle.x, 0, spawnCircle.y), Quaternion.identity);
             }
         }
         // Spawn 100
@@ -33,7 +35,8 @@ public class Spawner : MonoBehaviour
         {
             for (int i = 0; i < 100; i++)
             {
-                Instantiate(visitor, transform.position, Quaternion.identity);
+                Vector2 spawnCircle = Random.insideUnitCircle * 50.0f;
+                Instantiate(visitor, transform.position + new Vector3(spawnCircle.x, 0, spawnCircle.y), Quaternion.identity);
             }
         }
     }

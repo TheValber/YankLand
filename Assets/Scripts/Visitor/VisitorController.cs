@@ -36,10 +36,16 @@ public class VisitorController : MonoBehaviour
 
     void Update()
     {
-        if (!isInPOI && agent.hasPath && !agent.pathPending && (agent.remainingDistance < 10.0f || (targetPOI.getLastQueuePosition() - transform.position).magnitude < 10.0f))
+        if (!isInPOI && agent.hasPath && !agent.pathPending)
         {
-            targetPOI.goInQueue(this);
-            isInPOI = true;
+            // Check if we've reached the destination
+            if (agent.remainingDistance < 10.0f ||(targetPOI.getLastQueuePosition() - transform.position).magnitude < 10.0f)
+            {
+                targetPOI.goInQueue(this);
+                isInPOI = true;
+                agent.radius = 0.6f;
+                agent.avoidancePriority = 75;
+            }
         }
     }
     
@@ -47,7 +53,6 @@ public class VisitorController : MonoBehaviour
     {
         agent.SetDestination(destination);
         agent.stoppingDistance = stoppingDistance;
-        agent.radius = 0.6f;
     }
     
     public Vector3 getPosition()
@@ -70,6 +75,6 @@ public class VisitorController : MonoBehaviour
         targetPOI = poisManager.GetRandomPOI(targetPOI).GetComponent<POI>();
         agent.SetDestination(targetPOI.GetInPoint());
         agent.stoppingDistance = 0.0f;
-        agent.radius = 1.5f;
+        agent.avoidancePriority = 50;
     }
 }
