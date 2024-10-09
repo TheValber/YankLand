@@ -7,8 +7,6 @@ using Random = UnityEngine.Random;
 
 public class VisitorController : MonoBehaviour
 {
-    private float speed = 10.0f;
-    
     private NavMeshAgent agent;
     private Renderer visitorRenderer;
     private Collider visitorCollider;
@@ -20,7 +18,6 @@ public class VisitorController : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.speed = speed;
         
         visitorRenderer = GetComponent<Renderer>();
         visitorCollider = GetComponent<Collider>();
