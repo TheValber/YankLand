@@ -7,12 +7,12 @@ using Random = UnityEngine.Random;
 
 public class VisitorController : MonoBehaviour
 {
-    private NavMeshAgent agent;
-    private Renderer visitorRenderer;
-    private Collider visitorCollider;
+    private NavMeshAgent agent = null;
+    private Renderer visitorRenderer = null;
+    private Collider visitorCollider = null;
     
-    private POISManager poisManager;
-    private POI targetPOI;
+    private POISManager poisManager = null;
+    private POI targetPOI = null;
     private bool isInPOI = false;
 
     void Start()
@@ -36,7 +36,7 @@ public class VisitorController : MonoBehaviour
         if (!isInPOI && agent.hasPath && !agent.pathPending)
         {
             // Check if we've reached the destination
-            if (agent.remainingDistance < 10.0f ||(targetPOI.getLastQueuePosition() - transform.position).magnitude < 10.0f)
+            if (agent.remainingDistance < 10.0f /*|| (targetPOI.getLastQueuePosition() - transform.position).magnitude < 10.0f*/)
             {
                 targetPOI.goInQueue(this);
                 isInPOI = true;
@@ -44,6 +44,11 @@ public class VisitorController : MonoBehaviour
                 agent.avoidancePriority = 75;
             }
         }
+    }
+    
+    public void setPriority(int priority)
+    {
+        agent.avoidancePriority = priority;
     }
     
     public void setNewDestination(Vector3 destination, float stoppingDistance)
@@ -61,9 +66,11 @@ public class VisitorController : MonoBehaviour
     {
         visitorRenderer.enabled = false;
         visitorCollider.enabled = false;
+        agent.enabled = false;
     }
     
     public void exitPOI(Vector3 outPosition) {
+        agent.enabled = true;
         agent.Warp(outPosition);
         isInPOI = false;
         visitorRenderer.enabled = true;
@@ -72,6 +79,7 @@ public class VisitorController : MonoBehaviour
         targetPOI = poisManager.GetRandomPOI(targetPOI).GetComponent<POI>();
         agent.SetDestination(targetPOI.GetInPoint());
         agent.stoppingDistance = 0.0f;
-        agent.avoidancePriority = 50;
+        // agent.radius = 1.0f;
+        agent.avoidancePriority = 0;
     }
 }

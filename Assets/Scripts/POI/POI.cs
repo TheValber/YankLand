@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class POI : MonoBehaviour
 {
-    private Transform inPoint;
-    private Transform outPoint;
+    private Transform inPoint = null;
+    private Transform outPoint = null;
     
     [SerializeField] int maxPersonsInPOI = 3;
     [SerializeField] float timeInPOI = 3.0f;
@@ -15,7 +15,9 @@ public class POI : MonoBehaviour
     private Queue<float> inPOIQueueTime = new Queue<float>();
     private bool hasToUpdateQueue = false;
     
-    private Vector3 lastQueuePosition;
+    private Vector3 lastQueuePosition = Vector3.zero;
+
+    public int inPOIQueueCount; // For debugging purposes
     
     void Start()
     {
@@ -28,6 +30,7 @@ public class POI : MonoBehaviour
         enterPOI();
         exitPOI();
         updateQueue();
+        inPOIQueueCount = inThePOI.Count;
     }
     
     public Vector3 GetInPoint()
@@ -55,11 +58,13 @@ public class POI : MonoBehaviour
                     visitor.setNewDestination(previousPosition, 0.1f);
 
                 }
-                if ((visitor.getPosition() - previousPosition).magnitude > 2.5f)
+                if ((visitor.getPosition() - previousPosition).magnitude > 1.5f)
                 {
-                    visitor.setNewDestination(previousPosition, 2.0f);
+                    visitor.setNewDestination(previousPosition, 1.2f);
                     hasToUpdateQueue = true;
                 }
+                
+                visitor.setPriority(index);
 
                 index++;
                 previousPosition = visitor.getPosition();
@@ -70,7 +75,7 @@ public class POI : MonoBehaviour
     
     private void enterPOI()
     {
-        if (queue.Count > 0 && inThePOI.Count < maxPersonsInPOI && (queue.Peek().getPosition() - inPoint.position).magnitude < 1.5f)
+        if (queue.Count > 0 && inThePOI.Count < maxPersonsInPOI && (queue.Peek().getPosition() - inPoint.position).magnitude < 1.0f)
         {
             VisitorController visitor = queue.Dequeue();
             visitor.goInPOI();
@@ -90,7 +95,7 @@ public class POI : MonoBehaviour
         }
     }
     
-    public Vector3 getLastQueuePosition()
+    public Vector3 getLastQueuePosition() // Est il pertinent pour les visiteurs de detecter la fin de la file d'attente ?
     {
         return lastQueuePosition;
     }
