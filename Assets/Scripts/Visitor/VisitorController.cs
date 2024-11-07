@@ -36,7 +36,7 @@ public class VisitorController : MonoBehaviour
         if (!isInPOI && agent.hasPath && !agent.pathPending)
         {
             // Check if we've reached the destination
-            if (agent.remainingDistance < 10.0f /*|| (targetPOI.getLastQueuePosition() - transform.position).magnitude < 10.0f*/)
+            if (agent.remainingDistance < 10.0f)
             {
                 targetPOI.goInQueue(this);
                 isInPOI = true;

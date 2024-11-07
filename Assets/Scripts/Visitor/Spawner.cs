@@ -8,6 +8,13 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject visitor = null;
     private float spawnRadius = 6.0f;
+    
+    private UIManager uiManager = null;
+    
+    void Start()
+    {
+        uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+    }
 
     void Update()
     {
@@ -16,6 +23,7 @@ public class Spawner : MonoBehaviour
         {
             Vector2 spawnCircle = Random.insideUnitCircle * spawnRadius;
             Instantiate(visitor, transform.position + new Vector3(spawnCircle.x, 0, spawnCircle.y), Quaternion.identity);
+            uiManager.addVisitor(1);
         }
         // Spawn 10
         if (Input.GetKeyDown(KeyCode.R))
@@ -25,6 +33,7 @@ public class Spawner : MonoBehaviour
                 Vector2 spawnCircle = Random.insideUnitCircle * spawnRadius;
                 Instantiate(visitor, transform.position + new Vector3(spawnCircle.x, 0, spawnCircle.y), Quaternion.identity);
             }
+            uiManager.addVisitor(10);
         }
         // Spawn 100
         if (Input.GetKeyDown(KeyCode.T))
@@ -34,6 +43,7 @@ public class Spawner : MonoBehaviour
                 Vector2 spawnCircle = Random.insideUnitCircle * spawnRadius;
                 Instantiate(visitor, transform.position + new Vector3(spawnCircle.x, 0, spawnCircle.y), Quaternion.identity);
             }
+            uiManager.addVisitor(100);
         }
     }
 
