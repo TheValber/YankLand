@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject visitor = null;
+    private GameObject visitor = null;
     private float spawnRadius = 6.0f;
     
     private UIManager uiManager = null;
@@ -14,6 +15,7 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        visitor = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Visitor.prefab");
     }
 
     void Update()

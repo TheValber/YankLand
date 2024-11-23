@@ -16,7 +16,7 @@ public class House : MonoBehaviour
     
     void Start()
     {
-        visitor = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/TmpPerson.prefab");
+        visitor = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Visitor.prefab");
         uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
         nextSpawnTime = Random.Range(0, minSpawnTime);
     }
