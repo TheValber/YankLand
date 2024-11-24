@@ -1,3 +1,27 @@
+# YankCity
+
+## Controls
+
+- Interactions :
+	- **E / R / T**   -   Add 1, 10, 25 visitors
+	- **ESCAPE**   -   Quit the game
+
+- Camera :
+	- **ZQSD**   -   Move camera
+	- **SPACE / C**   -   Fly up / Fly down
+	- **SHIFT**   -   Fly faster
+
+## Assets
+
+- SimplePoly City - Low Poly Assets
+	- https://assetstore.unity.com/packages/3d/environments/simplepoly-city-low-poly-assets-58899
+
+- POLY STYLE - Vegetation Pack
+	- https://assetstore.unity.com/packages/3d/vegetation/poly-style-vegetation-pack-104112
+
+- Fantasy Lowpoly Pack (Demo)
+	- https://assetstore.unity.com/packages/3d/environments/fantasy/fantasy-lowpoly-pack-demo-301518
+
 # Advanced programming - Unity
 
 ## Objectives
