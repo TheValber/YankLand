@@ -35096,7 +35096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee74341c84404bf7803996877d90a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visitor: {fileID: 1581802625}
+  visitor: {fileID: 8600375214827866285, guid: 4a969ba3555b749499125a6a7aac771f, type: 3}
 --- !u!4 &1370025398
 Transform:
   m_ObjectHideFlags: 0
@@ -48196,6 +48196,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 31bbda51eeab02f44a8e92a7da2f5ff8, type: 3}
   m_PrefabInstance: {fileID: 1890124359}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1890946206
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1890946208}
+  - component: {fileID: 1890946207}
+  m_Layer: 0
+  m_Name: QuitGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1890946207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890946206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b82af3cc05b5823429aa4284b3462ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1890946208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890946206}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1894270172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49505,7 +49549,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 17, y: 0}
-  m_SizeDelta: {x: 500, y: 150}
+  m_SizeDelta: {x: 500, y: 160}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1931761066
 MonoBehaviour:
@@ -49527,9 +49571,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Interactions :\n    E / R / T   -   Add 1, 10, 25 visitors\n\nCamera :\n   
-    ZQSD   -   Move camera\n    SPACE / C   -   Fly up / Fly down\n    SHIFT   -  
-    Fly faster"
+  m_text: "Interactions :\n    E / R / T   -   Add 1, 10, 25 visitors\n    ESCAPE  
+    -   Quit the game\n\nCamera :\n    ZQSD   -   Move camera\n    SPACE / C   -  
+    Fly up / Fly down\n    SHIFT   -   Fly faster"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -54952,3 +54996,4 @@ SceneRoots:
   - {fileID: 552624634}
   - {fileID: 1544906443}
   - {fileID: 1019793880}
+  - {fileID: 1890946208}
