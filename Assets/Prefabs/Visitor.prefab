@@ -145,3 +145,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPosition: {x: 0, y: 0, z: 0}
   nbRemainingPOIs: 0
+  bodyPrefabs:
+  - {fileID: 6103262681899122112, guid: fcabbf6dce97b4143895e121697800f1, type: 3}
+  - {fileID: 1577362923990514326, guid: 3ef454cc035adc1489a9aec1f5a10d55, type: 3}
+  - {fileID: 329728464637169899, guid: 59b9fc048e4b5184bbd6bb8efc356091, type: 3}
+  - {fileID: 7706473263718013719, guid: bda9b0031f8f38e4e98e7780f1fea9b8, type: 3}
+  - {fileID: 7019088425620113033, guid: 5da73550c90a266498e0fcd9c6437148, type: 3}
+  - {fileID: 2369712856593308033, guid: 730000931cae1454c8083362445e8f75, type: 3}
+  - {fileID: 6562031803846321546, guid: 619f88d1e87438a43a166f80364f0fd4, type: 3}
+  - {fileID: 3305581528943329081, guid: 96c1702b56fa5a7488457a6a515ac58e, type: 3}
+  vel: 0

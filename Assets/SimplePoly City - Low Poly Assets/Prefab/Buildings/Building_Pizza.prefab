@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPersonsInPOI: 4
-  timeInPOI: 20
+  timeInPOI: 40
   inPOIQueueCount: 0
 --- !u!1 &43475039738369333
 GameObject:

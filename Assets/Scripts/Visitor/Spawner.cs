@@ -40,12 +40,12 @@ public class Spawner : MonoBehaviour
         // Spawn 100
         if (Input.GetKeyDown(KeyCode.T))
         {
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 25; i++)
             {
                 Vector2 spawnCircle = Random.insideUnitCircle * spawnRadius;
                 Instantiate(visitor, transform.position + new Vector3(spawnCircle.x, 0, spawnCircle.y), Quaternion.identity);
             }
-            uiManager.addVisitor(100);
+            uiManager.addVisitor(25);
         }
     }
 
