@@ -14,6 +14,12 @@ public class VisitorController : MonoBehaviour
     private POISManager poisManager = null;
     private POI targetPOI = null;
     private bool isInPOI = false;
+    
+    public Vector3 spawnPosition = Vector3.zero;
+    public int nbRemainingPOIs = 0;
+    private bool isExiting = false;
+    
+    private UIManager uiManager = null;
 
     void Start()
     {
@@ -23,17 +29,32 @@ public class VisitorController : MonoBehaviour
         visitorCollider = GetComponent<Collider>();
         
         poisManager = GameObject.Find("POIs").GetComponent<POISManager>();
+        
+        uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        
+        spawnPosition = transform.position;
+        
+        nbRemainingPOIs = Random.Range(1, 5);
 
         while (targetPOI == null)
         {
             targetPOI = poisManager.GetRandomPOI(null).GetComponent<POI>();
         }
         agent.SetDestination(targetPOI.GetInPoint());
+        nbRemainingPOIs--;
     }
 
     void Update()
     {
-        if (!isInPOI && agent.hasPath && !agent.pathPending)
+        if (isExiting)
+        {
+            if ((transform.position - spawnPosition).magnitude < 1.0f)
+            {
+                uiManager.removeVisitor(1);
+                Destroy(gameObject);
+            }
+        }
+        else if (!isInPOI && agent.hasPath && !agent.pathPending)
         {
             // Check if we've reached the destination
             if (agent.remainingDistance < 10.0f)
@@ -76,8 +97,18 @@ public class VisitorController : MonoBehaviour
         visitorRenderer.enabled = true;
         visitorCollider.enabled = true;
         
-        targetPOI = poisManager.GetRandomPOI(targetPOI).GetComponent<POI>();
-        agent.SetDestination(targetPOI.GetInPoint());
+        if (nbRemainingPOIs > 0)
+        {
+            targetPOI = poisManager.GetRandomPOI(targetPOI).GetComponent<POI>();
+            agent.SetDestination(targetPOI.GetInPoint());
+            nbRemainingPOIs--;
+        } else
+        {
+            targetPOI = null;
+            agent.SetDestination(spawnPosition);
+            isExiting = true;
+        }
+
         agent.stoppingDistance = 0.0f;
         // agent.radius = 1.0f;
         agent.avoidancePriority = 0;

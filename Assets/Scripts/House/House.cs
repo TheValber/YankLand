@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class House : MonoBehaviour
 {
-    /*[SerializeField]*/ float minSpawnTime = 10.0f;
-    /*[SerializeField]*/ float maxSpawnTime = 60.0f;
+    /*[SerializeField]*/ float minSpawnTime = 5.0f;
+    /*[SerializeField]*/ float maxSpawnTime = 30.0f;
     
     private float nextSpawnTime = 0.0f;
     private float spawnProgression = 0.0f;

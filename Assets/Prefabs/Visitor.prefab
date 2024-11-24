@@ -143,4 +143,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7b5d2d2b96049428147fb63f43f7bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInPOI: 0
+  spawnPosition: {x: 0, y: 0, z: 0}
+  nbRemainingPOIs: 0
