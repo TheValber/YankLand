@@ -5,50 +5,67 @@ using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/// <summary>
+/// Handles spawning visitors in a circular area.
+/// Supports spawning 1, 10, or 100 visitors at a time.
+/// </summary>
 public class Spawner : MonoBehaviour
 {
-    private GameObject visitor = null;
-    private float spawnRadius = 6.0f;
+    // --- Configuration ---
+    private float spawnRadius = 6.0f; // Radius of the spawn area
     
-    private UIManager uiManager = null;
+    // --- References ---
+    private GameObject visitor = null; // Prefab for the visitor to spawn
+    private UIManager uiManager = null; // Reference to the UI manager for updating visitor count
     
+    /// <summary>
+    /// Initializes references to visitor prefab and UI manager.
+    /// </summary>
     void Start()
     {
         uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
         visitor = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Visitor.prefab");
     }
 
+    /// <summary>
+    /// Handles spawning visitors based on user input.
+    /// </summary>
     void Update()
     {
-        // Spawn 1
+        // Spawn 1 visitor when E is pressed
         if (Input.GetKeyDown(KeyCode.E))
+        {
+            SpawnVisitors(1);
+        }
+        // Spawn 10 visitors when R is pressed
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SpawnVisitors(10);
+        }
+        // Spawn 25 visitors when T is pressed
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            SpawnVisitors(25);
+        }
+    }
+    
+    /// <summary>
+    /// Spawns the specified number of visitors within the spawn area.
+    /// </summary>
+    /// <param name="count">The number of visitors to spawn.</param>
+    private void SpawnVisitors(int count)
+    {
+        for (int i = 0; i < count; i++)
         {
             Vector2 spawnCircle = Random.insideUnitCircle * spawnRadius;
             Instantiate(visitor, transform.position + new Vector3(spawnCircle.x, 0, spawnCircle.y), Quaternion.identity);
-            uiManager.addVisitor(1);
         }
-        // Spawn 10
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                Vector2 spawnCircle = Random.insideUnitCircle * spawnRadius;
-                Instantiate(visitor, transform.position + new Vector3(spawnCircle.x, 0, spawnCircle.y), Quaternion.identity);
-            }
-            uiManager.addVisitor(10);
-        }
-        // Spawn 100
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            for (int i = 0; i < 25; i++)
-            {
-                Vector2 spawnCircle = Random.insideUnitCircle * spawnRadius;
-                Instantiate(visitor, transform.position + new Vector3(spawnCircle.x, 0, spawnCircle.y), Quaternion.identity);
-            }
-            uiManager.addVisitor(25);
-        }
+        uiManager.addVisitor(count);
     }
 
+    /// <summary>
+    /// Draws a wireframe sphere around the spawn area for visualization.
+    /// </summary>
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
