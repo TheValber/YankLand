@@ -18,16 +18,14 @@ public class House : MonoBehaviour
     private float spawnProgression = 0.0f; // Progression towards the next spawn
     
     // --- References ---
-    private GameObject visitor = null; // Prefab for the visitor to spawn
+    [SerializeField] private GameObject visitor = null; // Prefab for the visitor to spawn
     private UIManager uiManager = null; // Reference to the UI manager for updating visitor count
     
     /// <summary>
     /// Initializes references and sets the initial spawn time.
-    /// Loads the visitor prefab and connects to the UI manager.
     /// </summary>
     void Start()
     {
-        visitor = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Visitor.prefab");
         uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
         nextSpawnTime = Random.Range(0, minSpawnTime);
     }

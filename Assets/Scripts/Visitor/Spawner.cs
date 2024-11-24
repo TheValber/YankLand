@@ -15,16 +15,15 @@ public class Spawner : MonoBehaviour
     private float spawnRadius = 6.0f; // Radius of the spawn area
     
     // --- References ---
-    private GameObject visitor = null; // Prefab for the visitor to spawn
+    [SerializeField] private GameObject visitor = null; // Prefab for the visitor to spawn
     private UIManager uiManager = null; // Reference to the UI manager for updating visitor count
     
     /// <summary>
-    /// Initializes references to visitor prefab and UI manager.
+    /// Initializes references to UI manager.
     /// </summary>
     void Start()
     {
         uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
-        visitor = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Visitor.prefab");
     }
 
     /// <summary>

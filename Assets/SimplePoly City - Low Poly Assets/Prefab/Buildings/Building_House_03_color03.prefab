@@ -128,5 +128,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a00c98cbdc2c485fbefef7b2a6b971d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnTime: 1
-  maxSpawnTime: 5
+  visitor: {fileID: 8600375214827866285, guid: 4a969ba3555b749499125a6a7aac771f, type: 3}
